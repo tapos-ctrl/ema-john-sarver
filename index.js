@@ -15,7 +15,7 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 const app = express()
 app.use(bodyParser.json());
 app.use(cors());
-const port = 5000
+const port =process.env.PORT || 3001
 
 console.log(process.env.DB_USER, process.env.DB_PASS, process.env.DB_NAME)
 
@@ -79,6 +79,4 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || port)
